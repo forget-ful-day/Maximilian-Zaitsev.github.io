@@ -1,0 +1,253 @@
+{
+  "site": {
+    "title": "Иван Петров - Портфолио",
+    "theme": "dark",
+    "language": "ru",
+    "admin": {
+      "username": "admin",
+      "lastLogin": "2024-01-15T08:00:00Z"
+    }
+  },
+  "pages": {
+    "index": {
+      "heroTitle": "Привет, я <span class='highlight'>Иван Петров</span>",
+      "heroSubtitle": "Fullstack разработчик & Дизайнер",
+      "heroDescription": "Создаю современные веб-приложения с фокусом на пользовательский опыт и производительность. Более 3 лет опыта в разработке сложных интерфейсов и серверных решений.",
+      "projectsCount": "12",
+      "experienceYears": "3+",
+      "happyClients": "24",
+      "projectsCardTitle": "Лучшие проекты",
+      "projectsCardDesc": "Посмотрите мои работы и кейсы",
+      "achievementsCardTitle": "Достижения",
+      "achievementsCardDesc": "Сертификаты, награды и успехи",
+      "aboutCardTitle": "Обо мне",
+      "aboutCardDesc": "Узнайте больше о моём опыте",
+      "featuresTitle": "Почему выбирают меня",
+      "feature1Title": "Современные технологии",
+      "feature1Desc": "Использую последние версии фреймворков и инструментов для создания производительных приложений",
+      "feature2Title": "Красивый дизайн",
+      "feature2Desc": "Создаю интерфейсы, которые нравятся пользователям и решают бизнес-задачи",
+      "feature3Title": "Быстрая работа",
+      "feature3Desc": "Оптимизирую производительность приложений для лучшего пользовательского опыта"
+    },
+    "about": {
+      "title": "Обо мне",
+      "description": "Fullstack разработчик с passion к созданию цифровых продуктов",
+      "bio": "Я занимаюсь веб-разработкой более 3 лет. Специализируюсь на создании современных веб-приложений с использованием React, Node.js и современных инструментов разработки.",
+      "skills": [
+        {
+          "name": "JavaScript",
+          "level": 90,
+          "category": "frontend"
+        },
+        {
+          "name": "React",
+          "level": 85,
+          "category": "frontend"
+        },
+        {
+          "name": "Node.js",
+          "level": 80,
+          "category": "backend"
+        },
+        {
+          "name": "TypeScript",
+          "level": 75,
+          "category": "frontend"
+        },
+        {
+          "name": "MongoDB",
+          "level": 70,
+          "category": "database"
+        }
+      ],
+      "experience": [
+        {
+          "company": "Tech Solutions Inc.",
+          "position": "Frontend Developer",
+          "period": "2022 - настоящее время",
+          "description": "Разработка пользовательских интерфейсов для корпоративных приложений"
+        },
+        {
+          "company": "Digital Agency",
+          "position": "Fullstack Developer", 
+          "period": "2021 - 2022",
+          "description": "Создание веб-приложений для клиентов из различных отраслей"
+        }
+      ]
+    }
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-commerce Platform",
+      "description": "Полнофункциональная платформа для онлайн-продаж с системой управления заказами и аналитикой",
+      "technologies": ["React", "Node.js", "MongoDB", "Express", "Stripe"],
+      "image": "assets/images/project1.jpg",
+      "link": "https://example.com/ecommerce",
+      "github": "https://github.com/username/ecommerce",
+      "views": 156,
+      "category": "fullstack",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Task Management App",
+      "description": "Приложение для управления задачами с реальным временем обновления и командной работой",
+      "technologies": ["Vue.js", "Firebase", "Vuex", "SCSS"],
+      "image": "assets/images/project2.jpg", 
+      "link": "https://example.com/tasks",
+      "github": "https://github.com/username/taskapp",
+      "views": 89,
+      "category": "frontend",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Weather Dashboard",
+      "description": "Информационная панель с прогнозом погоды и красивой визуализацией данных",
+      "technologies": ["React", "Chart.js", "Weather API", "Styled Components"],
+      "image": "assets/images/project3.jpg",
+      "link": "https://example.com/weather",
+      "github": "https://github.com/username/weather",
+      "views": 67,
+      "category": "frontend",
+      "featured": false
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "name": "Анна Иванова",
+      "email": "anna@example.com",
+      "message": "Здравствуйте! Заинтересована в сотрудничестве по проекту веб-приложения для стартапа. Есть подробное ТЗ и дизайн-макеты. Хотелось бы обсудить сроки и бюджет.",
+      "date": "2024-01-15T10:30:00Z",
+      "read": false,
+      "type": "collaboration",
+      "phone": "+7 (999) 123-45-67"
+    },
+    {
+      "id": 2, 
+      "name": "Петр Сидоров",
+      "email": "peter@company.com",
+      "message": "Добрый день! Нужна консультация по оптимизации производительности React приложения. Текущая загрузка страницы занимает более 5 секунд.",
+      "date": "2024-01-14T15:45:00Z",
+      "read": true,
+      "type": "consultation",
+      "company": "TechCorp Ltd."
+    },
+    {
+      "id": 3,
+      "name": "Мария Козлова",
+      "email": "maria@design-studio.ru",
+      "message": "Приветствую! Ищем разработчика для долгосрочного сотрудничества над проектом интернет-магазина. Интересует fullstack разработка.",
+      "date": "2024-01-13T09:20:00Z", 
+      "read": true,
+      "type": "job-offer",
+      "budget": "договорная"
+    }
+  ],
+  "analytics": {
+    "totalVisitors": 1243,
+    "uniqueVisitors": 897,
+    "pageViews": {
+      "index.html": 856,
+      "projects.html": 432, 
+      "about.html": 287,
+      "contact.html": 198,
+      "achievements.html": 156
+    },
+    "trafficSources": {
+      "direct": 560,
+      "search": 373,
+      "social": 187,
+      "referral": 123
+    },
+    "activities": [
+      {
+        "id": 1,
+        "type": "message",
+        "description": "Новое сообщение от Анны Ивановой",
+        "time": "2024-01-15T10:30:00Z",
+        "icon": "✉️"
+      },
+      {
+        "id": 2, 
+        "type": "view",
+        "description": "Кто-то просмотрел ваш проект 'E-commerce Platform'",
+        "time": "2024-01-15T09:15:00Z",
+        "icon": "👀"
+      },
+      {
+        "id": 3,
+        "type": "contact", 
+        "description": "Новая заявка с формы обратной связи",
+        "time": "2024-01-14T16:20:00Z",
+        "icon": "📞"
+      },
+      {
+        "id": 4,
+        "type": "download",
+        "description": "Кто-то скачал ваше резюме",
+        "time": "2024-01-14T14:45:00Z", 
+        "icon": "📥"
+      },
+      {
+        "id": 5,
+        "type": "share",
+        "description": "Ваше портфолио поделились в социальных сетях",
+        "time": "2024-01-13T11:30:00Z",
+        "icon": "🔗"
+      }
+    ],
+    "popularProjects": [1, 2, 3],
+    "conversionRate": 3.2
+  },
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Лучший молодой разработчик 2023",
+      "organization": "IT Community Awards",
+      "date": "2023-12-01",
+      "description": "Награда за инновационные решения в веб-разработке",
+      "image": "assets/achievements/award1.jpg",
+      "category": "award"
+    },
+    {
+      "id": 2,
+      "title": "React Professional Certificate",
+      "organization": "Meta",
+      "date": "2023-08-15", 
+      "description": "Сертификат о прохождении профессионального курса по React",
+      "image": "assets/achievements/certificate1.jpg",
+      "category": "certificate"
+    },
+    {
+      "id": 3,
+      "title": "Hackathon Winner - Digital Innovation",
+      "organization": "TechCrunch",
+      "date": "2023-05-20",
+      "description": "Первое место на хакатоне по созданию инновационных веб-решений",
+      "image": "assets/achievements/hackathon1.jpg",
+      "category": "competition"
+    }
+  ],
+  "settings": {
+    "seo": {
+      "description": "Портфолио fullstack разработчика Ивана Петрова. Создание современных веб-приложений на React и Node.js.",
+      "keywords": "разработчик, React, Node.js, JavaScript, портфолио"
+    },
+    "social": {
+      "github": "https://github.com/ivanpetrov",
+      "linkedin": "https://linkedin.com/in/ivanpetrov",
+      "telegram": "https://t.me/ivanpetrov",
+      "email": "ivan@petrov.com"
+    },
+    "features": {
+      "darkMode": true,
+      "animations": true,
+      "analytics": true,
+      "contactForm": true
+    }
+  }
+}

@@ -1,0 +1,705 @@
+/* Редактор страниц - Wix-like */
+
+.editor-mode {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Верхняя панель */
+.editor-header {
+    background: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.editor-header-left,
+.editor-header-right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.editor-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.editor-btn {
+    padding: 0.5rem 1rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.editor-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.editor-btn.btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.page-selector {
+    padding: 0.5rem 1rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+/* Основной layout */
+.editor-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Левая панель - Блоки */
+.blocks-panel {
+    width: 280px;
+    background: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.blocks-search {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blocks-search input {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+}
+
+.blocks-categories {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.category-section {
+    margin-bottom: 1rem;
+}
+
+.category-header {
+    padding: 0.75rem 1rem;
+    background: var(--background-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.category-header:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.blocks-list {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.block-item {
+    padding: 1rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: grab;
+    text-align: center;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.block-item:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.block-item:active {
+    cursor: grabbing;
+}
+
+.block-item i {
+    font-size: 1.5rem;
+}
+
+/* Центральная область - Canvas */
+.editor-canvas {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #e5e7eb;
+    overflow: hidden;
+}
+
+.canvas-toolbar {
+    background: white;
+    border-bottom: 1px solid #d1d5db;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.canvas-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.canvas-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #374151;
+    transition: all 0.2s;
+}
+
+.canvas-btn:hover {
+    background: #f3f4f6;
+}
+
+.canvas-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.canvas-divider {
+    width: 1px;
+    height: 24px;
+    background: #d1d5db;
+    margin: 0 0.5rem;
+}
+
+.zoom-level {
+    padding: 0 0.5rem;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.canvas-wrapper {
+    flex: 1;
+    overflow: auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.canvas-content {
+    background: white;
+    min-height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.canvas-content.mobile-view {
+    max-width: 375px;
+}
+
+.canvas-content.tablet-view {
+    max-width: 768px;
+}
+
+/* Элементы на canvas */
+.editable-element {
+    position: relative;
+    outline: 2px dashed transparent;
+    transition: outline 0.2s;
+}
+
+.editable-element:hover {
+    outline-color: var(--primary-color);
+}
+
+.editable-element.selected {
+    outline-color: var(--primary-color);
+    outline-width: 2px;
+    outline-style: solid;
+}
+
+.element-controls {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    z-index: 100;
+}
+
+.element-controls button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.element-controls button:hover {
+    opacity: 0.8;
+}
+
+/* Правая панель - Свойства */
+.properties-panel {
+    width: 320px;
+    background: var(--surface-color);
+    border-left: 1px solid var(--border-color);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.properties-content {
+    flex: 1;
+    padding: 1rem;
+}
+
+.no-selection {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+}
+
+.no-selection i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Группы свойств */
+.property-group {
+    margin-bottom: 1.5rem;
+}
+
+.property-group-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.property-item {
+    margin-bottom: 1rem;
+}
+
+.property-item label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.property-item input,
+.property-item select,
+.property-item textarea {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: inherit;
+}
+
+.property-item input[type="color"] {
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.property-item input[type="range"] {
+    width: 100%;
+}
+
+.range-value {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--surface-color);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.modal-close:hover {
+    background: var(--background-color);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Загрузка изображения */
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--background-color);
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-area:active {
+    transform: scale(0.98);
+}
+
+.upload-area i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+.upload-area p {
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.upload-hint {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.image-preview {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+}
+
+.image-url-input {
+    margin-top: 1rem;
+}
+
+.image-url-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.image-url-input input {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+}
+
+/* Кнопки */
+.btn-primary,
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #4f46e5;
+}
+
+.btn-secondary {
+    background: var(--background-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-color);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .blocks-panel {
+        width: 240px;
+    }
+    
+    .properties-panel {
+        width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-layout {
+        flex-direction: column;
+    }
+    
+    .blocks-panel {
+        width: 100%;
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .properties-panel {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        max-width: 400px;
+        z-index: 1000;
+        transition: right 0.3s;
+    }
+    
+    .properties-panel.active {
+        right: 0;
+    }
+}
+
+/* Drag & Drop стили */
+.drag-over {
+    border: 2px dashed var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+/* Стили для разных типов блоков */
+.block-text {
+    padding: 1rem;
+}
+
+.block-heading h1,
+.block-heading h2,
+.block-heading h3 {
+    margin: 0;
+}
+
+.block-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
+
+.block-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.block-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.block-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.block-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 2rem 0;
+}
+
+.block-section {
+    padding: 3rem 0;
+}
+
+.block-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.block-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.block-column {
+    flex: 1;
+}
+
+.block-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.block-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.block-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.block-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}

@@ -1,0 +1,83 @@
+/* Темы */
+[data-theme="dark"] {
+    --primary-color: #6366f1;
+    --secondary-color: #10b981;
+    --accent-color: #f59e0b;
+    --background-color: #0f172a;
+    --surface-color: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --border-color: #334155;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+[data-theme="light"] {
+    --primary-color: #4f46e5;
+    --secondary-color: #059669;
+    --accent-color: #d97706;
+    --background-color: #ffffff;
+    --surface-color: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+[data-theme="blue"] {
+    --primary-color: #3b82f6;
+    --secondary-color: #06b6d4;
+    --accent-color: #8b5cf6;
+    --background-color: #0c4a6e;
+    --surface-color: #1e3a8a;
+    --text-primary: #f0f9ff;
+    --text-secondary: #bae6fd;
+    --border-color: #1e40af;
+    --shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+    --gradient: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+
+[data-theme="green"] {
+    --primary-color: #10b981;
+    --secondary-color: #84cc16;
+    --accent-color: #f59e0b;
+    --background-color: #064e3b;
+    --surface-color: #047857;
+    --text-primary: #ecfdf5;
+    --text-secondary: #a7f3d0;
+    --border-color: #059669;
+    --shadow: 0 10px 25px rgba(6, 78, 59, 0.3);
+    --gradient: linear-gradient(135deg, #10b981, #84cc16);
+}
+
+[data-theme="purple"] {
+    --primary-color: #8b5cf6;
+    --secondary-color: #ec4899;
+    --accent-color: #f59e0b;
+    --background-color: #581c87;
+    --surface-color: #7c3aed;
+    --text-primary: #faf5ff;
+    --text-secondary: #e9d5ff;
+    --border-color: #a855f7;
+    --shadow: 0 10px 25px rgba(88, 28, 135, 0.3);
+    --gradient: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+[data-theme="orange"] {
+    --primary-color: #f59e0b;
+    --secondary-color: #ef4444;
+    --accent-color: #8b5cf6;
+    --background-color: #7c2d12;
+    --surface-color: #ea580c;
+    --text-primary: #fffbeb;
+    --text-secondary: #fed7aa;
+    --border-color: #f97316;
+    --shadow: 0 10px 25px rgba(124, 45, 18, 0.3);
+    --gradient: linear-gradient(135deg, #f59e0b, #ef4444);
+}
+
+/* Плавные переходы между темами */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
