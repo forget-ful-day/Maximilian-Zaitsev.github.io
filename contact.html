@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Иван Петров</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand" data-editable="true" data-content-id="navBrand">Иван Петров</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="achievements.html">Достижения</a></li>
+            <li><a href="contact.html" class="nav-active">Контакты</a></li>
+            <li><button id="themeToggle" class="theme-toggle">🌙</button></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 data-editable="true" data-content-id="contactTitle">Свяжитесь со мной</h1>
+            <p class="hero-subtitle" data-editable="true" data-content-id="contactDescription">
+                Готов обсудить ваш проект или ответить на вопросы
+            </p>
+        </div>
+    </section>
+
+    <!-- Контактная информация -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3 data-editable="true" data-content-id="emailTitle">Email</h3>
+                    <p data-editable="true" data-content-id="emailAddress">ivan@petrov.com</p>
+                    <a href="mailto:ivan@petrov.com" class="contact-link">Написать письмо</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3 data-editable="true" data-content-id="phoneTitle">Телефон</h3>
+                    <p data-editable="true" data-content-id="phoneNumber">+7 (999) 123-45-67</p>
+                    <a href="tel:+79991234567" class="contact-link">Позвонить</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3 data-editable="true" data-content-id="linkedinTitle">LinkedIn</h3>
+                    <p data-editable="true" data-content-id="linkedinUsername">ivan-petrov</p>
+                    <a href="https://linkedin.com/in/ivan-petrov" target="_blank" class="contact-link">Перейти в профиль</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3 data-editable="true" data-content-id="githubTitle">GitHub</h3>
+                    <p data-editable="true" data-content-id="githubUsername">ivanpetrov</p>
+                    <a href="https://github.com/ivanpetrov" target="_blank" class="contact-link">Посмотреть проекты</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2 data-editable="true" data-content-id="formTitle">Напишите мне</h2>
+                    <p data-editable="true" data-content-id="formDescription">
+                        Заполните форму ниже, и я свяжусь с вами в ближайшее время
+                    </p>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Имя *</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Тема *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Выберите тему</option>
+                            <option value="collaboration">Сотрудничество</option>
+                            <option value="project">Обсуждение проекта</option>
+                            <option value="consultation">Консультация</option>
+                            <option value="job">Предложение о работе</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Бюджет проекта</label>
+                        <select id="budget" name="budget">
+                            <option value="">Не указан</option>
+                            <option value="0-50">до 50,000 ₽</option>
+                            <option value="50-100">50,000 - 100,000 ₽</option>
+                            <option value="100-200">100,000 - 200,000 ₽</option>
+                            <option value="200+">от 200,000 ₽</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Опишите ваш проект или задайте вопрос..."></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="custom-checkbox">
+                                <svg class="check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L8 12.5858L15.2929 5.29289C15.6834 4.90237 16.3166 4.90237 16.7071 5.29289Z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            Подписаться на новости и обновления
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Отправить сообщение</span>
+                        <div class="btn-loader" style="display: none;">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                </form>
+                
+                <div id="formMessage" class="form-message hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Остались вопросы?</h2>
+            <p>Посетите страницу FAQ или свяжитесь со мной напрямую</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn-primary" onclick="location.href='faq.html'">Перейти в FAQ</button>
+                <button class="btn-secondary" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">Написать сообщение</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="about.html">Обо мне</a>
+                <a href="projects.html">Проекты</a>
+                <a href="achievements.html">Достижения</a>
+                <a href="services.html">Услуги</a>
+                <a href="pricing.html">Цены</a>
+                <a href="blog.html">Блог</a>
+                <a href="testimonials.html">Отзывы</a>
+                <a href="contact.html">Контакты</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-admin">
+                <a href="admin.html" class="admin-footer-btn">⚙️ Админ</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2024 Иван Петров. Все права защищены.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
+    <script src="scripts/contact.js"></script>
+    <script src="scripts/enhancements.js"></script>
+</body>
+</html>

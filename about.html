@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне - Иван Петров</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand" data-editable="true" data-content-id="navBrand">Иван Петров</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html" class="nav-active">Обо мне</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="achievements.html">Достижения</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><button id="themeToggle" class="theme-toggle">🌙</button></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 data-editable="true" data-content-id="aboutTitle">Обо мне</h1>
+            <p class="hero-subtitle" data-editable="true" data-content-id="aboutDescription">
+                Fullstack разработчик с passion к созданию цифровых продуктов
+            </p>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Блок с биографией -->
+                <div class="about-bio">
+                    <h2 data-editable="true" data-content-id="bioTitle">Моя история</h2>
+                    <div class="bio-text" data-editable="true" data-content-id="bioText">
+                        <p>Я занимаюсь веб-разработкой более 3 лет. Начал свой путь с изучения HTML/CSS и JavaScript, постепенно углубляясь во фреймворки и серверные технологии.</p>
+                        
+                        <p>Специализируюсь на создании современных веб-приложений с использованием React, Node.js и современных инструментов разработки. Верю в силу чистого кода, тестирования и постоянного обучения.</p>
+                        
+                        <p>В работе ценю внимание к деталям, понимание бизнес-задач клиента и создание продуктов, которые действительно решают проблемы пользователей.</p>
+                    </div>
+                    
+                    <div class="bio-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-editable="true" data-content-id="completedProjects">50+</span>
+                            <span class="stat-label">Завершенных проектов</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-editable="true" data-content-id="codingHours">5000+</span>
+                            <span class="stat-label">Часов программирования</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-editable="true" data-content-id="coffeeCups">1000+</span>
+                            <span class="stat-label">Чашек кофе</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок с навыками -->
+                <div class="about-skills">
+                    <h2 data-editable="true" data-content-id="skillsTitle">Навыки & Технологии</h2>
+                    
+                    <div class="skills-categories">
+                        <div class="category">
+                            <h3>Frontend</h3>
+                            <div class="skills-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">JavaScript/TypeScript</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 90%"></div>
+                                    </div>
+                                    <span class="skill-percent">90%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">React</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 85%"></div>
+                                    </div>
+                                    <span class="skill-percent">85%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Vue.js</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 75%"></div>
+                                    </div>
+                                    <span class="skill-percent">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <h3>Backend</h3>
+                            <div class="skills-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Node.js</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 80%"></div>
+                                    </div>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Express</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 85%"></div>
+                                    </div>
+                                    <span class="skill-percent">85%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Python/Django</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 70%"></div>
+                                    </div>
+                                    <span class="skill-percent">70%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Опыт работы -->
+            <div class="experience-section">
+                <h2 data-editable="true" data-content-id="experienceTitle">Опыт работы</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - настоящее время</div>
+                        <div class="timeline-content">
+                            <h3 data-editable="true" data-content-id="job1Title">Senior Frontend Developer</h3>
+                            <span class="company" data-editable="true" data-content-id="job1Company">Tech Solutions Inc.</span>
+                            <p data-editable="true" data-content-id="job1Description">
+                                Разработка пользовательских интерфейсов для корпоративных приложений. 
+                                Оптимизация производительности и внедрение современных практик разработки.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <div class="timeline-content">
+                            <h3 data-editable="true" data-content-id="job2Title">Fullstack Developer</h3>
+                            <span class="company" data-editable="true" data-content-id="job2Company">Digital Agency</span>
+                            <p data-editable="true" data-content-id="job2Description">
+                                Создание веб-приложений для клиентов из различных отраслей. 
+                                Работа над полным циклом разработки - от проектирования до deployment.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <div class="timeline-content">
+                            <h3 data-editable="true" data-content-id="job3Title">Junior Web Developer</h3>
+                            <span class="company" data-editable="true" data-content-id="job3Company">Startup Studio</span>
+                            <p data-editable="true" data-content-id="job3Description">
+                                Разработка и поддержка веб-сайтов. Изучение современных технологий 
+                                и участие в командных проектах.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-editable="true" data-content-id="ctaTitle">Готовы начать проект?</h2>
+            <p data-editable="true" data-content-id="ctaDescription">
+                Давайте обсудим, как я могу помочь реализовать ваши идеи
+            </p>
+            <button class="btn-primary" onclick="location.href='contact.html'">
+                Связаться со мной
+            </button>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="about.html">Обо мне</a>
+                <a href="projects.html">Проекты</a>
+                <a href="achievements.html">Достижения</a>
+                <a href="services.html">Услуги</a>
+                <a href="pricing.html">Цены</a>
+                <a href="blog.html">Блог</a>
+                <a href="testimonials.html">Отзывы</a>
+                <a href="contact.html">Контакты</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-admin">
+                <a href="admin.html" class="admin-footer-btn">⚙️ Админ</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2024 Иван Петров. Все права защищены.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
+    <script src="scripts/enhancements.js"></script>
+</body>
+</html>

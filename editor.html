@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактор страниц - Портфолио</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    <link rel="stylesheet" href="styles/editor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="editor-mode">
+    <!-- Верхняя панель инструментов -->
+    <header class="editor-header">
+        <div class="editor-header-left">
+            <button class="editor-btn" onclick="location.href='admin.html'">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+            <select id="pageSelector" class="page-selector">
+                <option value="index.html">Главная</option>
+                <option value="about.html">Обо мне</option>
+                <option value="projects.html">Проекты</option>
+                <option value="achievements.html">Достижения</option>
+                <option value="contact.html">Контакты</option>
+            </select>
+        </div>
+        <div class="editor-header-center">
+            <h2 class="editor-title">Редактор страниц</h2>
+        </div>
+        <div class="editor-header-right">
+            <button class="editor-btn" id="previewBtn">
+                <i class="fas fa-eye"></i> Превью
+            </button>
+            <button class="editor-btn btn-primary" id="saveBtn">
+                <i class="fas fa-save"></i> Сохранить
+            </button>
+        </div>
+    </header>
+
+    <div class="editor-layout">
+        <!-- Левая панель - Блоки -->
+        <aside class="blocks-panel">
+            <div class="panel-header">
+                <h3><i class="fas fa-th"></i> Блоки</h3>
+            </div>
+            <div class="blocks-search">
+                <input type="text" placeholder="Поиск блоков..." id="blocksSearch">
+            </div>
+            <div class="blocks-categories">
+                <div class="category-section" data-category="basic">
+                    <div class="category-header">
+                        <i class="fas fa-cube"></i> Базовые
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="text">
+                            <i class="fas fa-font"></i> Текст
+                        </div>
+                        <div class="block-item" data-block="heading">
+                            <i class="fas fa-heading"></i> Заголовок
+                        </div>
+                        <div class="block-item" data-block="button">
+                            <i class="fas fa-hand-pointer"></i> Кнопка
+                        </div>
+                        <div class="block-item" data-block="image">
+                            <i class="fas fa-image"></i> Изображение
+                        </div>
+                        <div class="block-item" data-block="video">
+                            <i class="fas fa-video"></i> Видео
+                        </div>
+                        <div class="block-item" data-block="divider">
+                            <i class="fas fa-minus"></i> Разделитель
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="layout">
+                    <div class="category-header">
+                        <i class="fas fa-columns"></i> Макеты
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="section">
+                            <i class="fas fa-square"></i> Секция
+                        </div>
+                        <div class="block-item" data-block="container">
+                            <i class="fas fa-box"></i> Контейнер
+                        </div>
+                        <div class="block-item" data-block="row">
+                            <i class="fas fa-grip-lines"></i> Строка
+                        </div>
+                        <div class="block-item" data-block="column">
+                            <i class="fas fa-grip-lines-vertical"></i> Колонка
+                        </div>
+                        <div class="block-item" data-block="grid">
+                            <i class="fas fa-th"></i> Сетка
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="content">
+                    <div class="category-header">
+                        <i class="fas fa-file-alt"></i> Контент
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="card">
+                            <i class="fas fa-id-card"></i> Карточка
+                        </div>
+                        <div class="block-item" data-block="gallery">
+                            <i class="fas fa-images"></i> Галерея
+                        </div>
+                        <div class="block-item" data-block="testimonial">
+                            <i class="fas fa-quote-left"></i> Отзыв
+                        </div>
+                        <div class="block-item" data-block="timeline">
+                            <i class="fas fa-stream"></i> Таймлайн
+                        </div>
+                        <div class="block-item" data-block="accordion">
+                            <i class="fas fa-list"></i> Аккордеон
+                        </div>
+                        <div class="block-item" data-block="tabs">
+                            <i class="fas fa-folder"></i> Вкладки
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="forms">
+                    <div class="category-header">
+                        <i class="fas fa-wpforms"></i> Формы
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="form">
+                            <i class="fas fa-envelope"></i> Форма
+                        </div>
+                        <div class="block-item" data-block="input">
+                            <i class="fas fa-edit"></i> Поле ввода
+                        </div>
+                        <div class="block-item" data-block="textarea">
+                            <i class="fas fa-align-left"></i> Текстовая область
+                        </div>
+                        <div class="block-item" data-block="select">
+                            <i class="fas fa-list"></i> Выпадающий список
+                        </div>
+                        <div class="block-item" data-block="checkbox">
+                            <i class="fas fa-check-square"></i> Чекбокс
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="media">
+                    <div class="category-header">
+                        <i class="fas fa-photo-video"></i> Медиа
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="slider">
+                            <i class="fas fa-sliders-h"></i> Слайдер
+                        </div>
+                        <div class="block-item" data-block="carousel">
+                            <i class="fas fa-images"></i> Карусель
+                        </div>
+                        <div class="block-item" data-block="embed">
+                            <i class="fas fa-code"></i> Встраивание
+                        </div>
+                        <div class="block-item" data-block="map">
+                            <i class="fas fa-map-marker-alt"></i> Карта
+                        </div>
+                        <div class="block-item" data-block="presentation">
+                            <i class="fas fa-file-powerpoint"></i> Презентация
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="social">
+                    <div class="category-header">
+                        <i class="fas fa-share-alt"></i> Социальные
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="social-links">
+                            <i class="fas fa-link"></i> Соц. сети
+                        </div>
+                        <div class="block-item" data-block="share">
+                            <i class="fas fa-share"></i> Кнопки шаринга
+                        </div>
+                        <div class="block-item" data-block="comments">
+                            <i class="fas fa-comments"></i> Комментарии
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="advanced">
+                    <div class="category-header">
+                        <i class="fas fa-cogs"></i> Продвинутые
+                    </div>
+                    <div class="blocks-list">
+                        <div class="block-item" data-block="counter">
+                            <i class="fas fa-calculator"></i> Счетчик
+                        </div>
+                        <div class="block-item" data-block="progress">
+                            <i class="fas fa-tasks"></i> Прогресс-бар
+                        </div>
+                        <div class="block-item" data-block="chart">
+                            <i class="fas fa-chart-bar"></i> График
+                        </div>
+                        <div class="block-item" data-block="animation">
+                            <i class="fas fa-magic"></i> Анимация
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Центральная область - Canvas -->
+        <main class="editor-canvas">
+            <div class="canvas-toolbar">
+                <div class="canvas-controls">
+                    <button class="canvas-btn" id="undoBtn" title="Отменить">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button class="canvas-btn" id="redoBtn" title="Повторить">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <div class="canvas-divider"></div>
+                    <button class="canvas-btn" id="zoomOutBtn" title="Уменьшить">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    <span class="zoom-level" id="zoomLevel">100%</span>
+                    <button class="canvas-btn" id="zoomInBtn" title="Увеличить">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <div class="canvas-divider"></div>
+                    <button class="canvas-btn" id="mobileView" title="Мобильный">
+                        <i class="fas fa-mobile-alt"></i>
+                    </button>
+                    <button class="canvas-btn" id="tabletView" title="Планшет">
+                        <i class="fas fa-tablet-alt"></i>
+                    </button>
+                    <button class="canvas-btn active" id="desktopView" title="Десктоп">
+                        <i class="fas fa-desktop"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="canvas-wrapper" id="canvasWrapper">
+                <div class="canvas-content" id="canvasContent">
+                    <!-- Здесь будет загружаться содержимое страницы -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Правая панель - Свойства -->
+        <aside class="properties-panel">
+            <div class="panel-header">
+                <h3><i class="fas fa-cog"></i> Свойства</h3>
+                <button class="panel-close" id="closeProperties">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="properties-content" id="propertiesContent">
+                <div class="no-selection">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <p>Выберите элемент для редактирования</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Модальное окно загрузки изображения -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Загрузить изображение</h3>
+                <button class="modal-close" onclick="closeModal('imageModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Перетащите изображение или видео сюда</p>
+                    <p class="upload-hint">или нажмите для выбора из проводника</p>
+                    <input type="file" id="imageInput" accept="image/*,video/*" multiple style="display: none;">
+                </div>
+                <div class="image-preview" id="imagePreview" style="display: none;">
+                    <img id="previewImg" src="" alt="Preview">
+                </div>
+                <div class="image-url-input">
+                    <label>Или введите URL:</label>
+                    <input type="url" id="imageUrlInput" placeholder="https://example.com/image.jpg">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('imageModal')">Отмена</button>
+                <button class="btn-primary" id="insertImageBtn">Вставить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/editor.js"></script>
+    <script src="scripts/storage.js"></script>
+</body>
+</html>

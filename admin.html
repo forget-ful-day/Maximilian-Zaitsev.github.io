@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .admin-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #1e293b;
+            border-right: 1px solid #334155;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .user-card {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+        }
+
+        .user-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .user-info p {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .nav-menu {
+            padding: 0 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+        }
+
+        .nav-item.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #334155;
+            margin-top: auto;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #1e293b;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: transparent;
+            border: 1px solid #334155;
+            color: #ef4444;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #334155;
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
+        }
+
+        /* Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border-color: #6366f1;
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-trend {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .form-input {
+            padding: 0.875rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #f8fafc;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .messages-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message-card {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: all 0.2s;
+        }
+
+        .message-card:hover {
+            border-color: #6366f1;
+        }
+
+        .message-card.unread {
+            border-left: 4px solid #6366f1;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .message-sender {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .message-email {
+            color: #6366f1;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .message-date {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .message-text {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-card {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-4px);
+            border-color: #6366f1;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+        }
+
+        .action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>⚡</span>
+                    <span>Админ</span>
+                </div>
+                <div class="user-card">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <h4>Администратор</h4>
+                        <p>Владелец сайта</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Дашборд</span>
+                </a>
+                <a href="#" class="nav-item" data-section="content">
+                    <span class="nav-icon">✏️</span>
+                    <span>Контент</span>
+                </a>
+                <a href="#" class="nav-item" data-section="messages">
+                    <span class="nav-icon">✉️</span>
+                    <span>Сообщения</span>
+                    <span id="unreadBadge" style="margin-left: auto; background: #6366f1; color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; display: none;">0</span>
+                </a>
+                <a href="editor.html" class="nav-item">
+                    <span class="nav-icon">🎨</span>
+                    <span>Редактор</span>
+                </a>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">👁</span>
+                    <span>Сайт</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">🚪 Выйти</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title" id="pageTitle">Дашборд</h1>
+                    <p class="page-subtitle" id="pageSubtitle">Обзор статистики и активности</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                        👁 Предпросмотр
+                    </button>
+                    <button class="btn btn-primary" onclick="saveAll()">
+                        💾 Сохранить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">👥</div>
+                            <span class="stat-trend trend-up">+12%</span>
+                        </div>
+                        <div class="stat-value" id="visitors">1,234</div>
+                        <div class="stat-label">Посетители за месяц</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">📩</div>
+                            <span class="stat-trend trend-up">+5</span>
+                        </div>
+                        <div class="stat-value" id="messages">24</div>
+                        <div class="stat-label">Новых сообщений</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">👀</div>
+                            <span class="stat-trend trend-up">+23%</span>
+                        </div>
+                        <div class="stat-value" id="views">5,678</div>
+                        <div class="stat-label">Просмотров проектов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">⭐</div>
+                            <span class="stat-trend">—</span>
+                        </div>
+                        <div class="stat-value">4.8<span style="font-size: 1.2rem; color: #94a3b8;">/5</span></div>
+                        <div class="stat-label">Средний рейтинг</div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2 class="section-title">Быстрые действия</h2>
+                    <div class="quick-actions">
+                        <div class="action-card" onclick="showSection('content')">
+                            <div class="action-icon">✏️</div>
+                            <div class="action-title">Редактировать</div>
+                            <div class="action-desc">Изменить контент</div>
+                        </div>
+                        <div class="action-card" onclick="showSection('messages')">
+                            <div class="action-icon">✉️</div>
+                            <div class="action-title">Сообщения</div>
+                            <div class="action-desc" id="newMessagesText">5 новых</div>
+                        </div>
+                        <div class="action-card" onclick="window.location.href='editor.html'">
+                            <div class="action-icon">🎨</div>
+                            <div class="action-title">Редактор</div>
+                            <div class="action-desc">Дизайн страниц</div>
+                        </div>
+                        <div class="action-card" onclick="exportData()">
+                            <div class="action-icon">📥</div>
+                            <div class="action-title">Экспорт</div>
+                            <div class="action-desc">Скачать данные</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section id="content" class="content-section">
+                <div class="section-card">
+                    <h2 class="section-title">Редактирование контента</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Имя и фамилия</label>
+                            <input type="text" class="form-input" id="editName" placeholder="Иван Петров">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Профессия</label>
+                            <input type="text" class="form-input" id="editProfession" placeholder="Fullstack разработчик">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Количество проектов</label>
+                            <input type="number" class="form-input" id="editProjects" placeholder="12">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Опыт (лет)</label>
+                            <input type="text" class="form-input" id="editExperience" placeholder="3+">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Клиенты</label>
+                            <input type="number" class="form-input" id="editClients" placeholder="24">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Описание</label>
+                            <textarea class="form-input" id="editDescription" rows="4" placeholder="О себе..."></textarea>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="saveContent()">💾 Сохранить изменения</button>
+                        <button class="btn btn-secondary" onclick="loadContent()">🔄 Загрузить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages" class="content-section">
+                <div class="section-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2 class="section-title" style="margin: 0;">Сообщения</h2>
+                        <select class="form-input" id="messageFilter" style="width: auto;" onchange="filterMessages()">
+                            <option value="all">Все</option>
+                            <option value="unread">Непрочитанные</option>
+                            <option value="read">Прочитанные</option>
+                        </select>
+                    </div>
+                    <div class="messages-list" id="messagesList">
+                        <!-- Сообщения загружаются динамически -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Простая система авторизации
+        const ADMIN_PASSWORD = 'admin123';
+        
+        // Проверка авторизации
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            const password = prompt('Введите пароль администратора:');
+            if (password !== ADMIN_PASSWORD) {
+                alert('Неверный пароль!');
+                window.location.href = 'index.html';
+            } else {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+            }
+        }
+
+        // Навигация
+        document.querySelectorAll('.nav-item[data-section]').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = item.getAttribute('data-section');
+                showSection(section);
+                
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+                
+                // Обновляем заголовок
+                const titles = {
+                    dashboard: { title: 'Дашборд', subtitle: 'Обзор статистики и активности' },
+                    content: { title: 'Редактирование', subtitle: 'Изменение контента сайта' },
+                    messages: { title: 'Сообщения', subtitle: 'Управление входящими сообщениями' }
+                };
+                
+                if (titles[sectionId]) {
+                    document.getElementById('pageTitle').textContent = titles[sectionId].title;
+                    document.getElementById('pageSubtitle').textContent = titles[sectionId].subtitle;
+                }
+                
+                if (sectionId === 'messages') {
+                    loadMessages();
+                } else if (sectionId === 'content') {
+                    loadContent();
+                }
+            }
+        }
+
+        // Загрузка данных
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem('siteData') || '{}');
+            return data;
+        }
+
+        function saveData(data) {
+            localStorage.setItem('siteData', JSON.stringify(data));
+        }
+
+        // Статистика
+        function updateStats() {
+            const data = loadData();
+            const stats = data.stats || {
+                visitors: 1234,
+                messages: 24,
+                views: 5678
+            };
+            
+            document.getElementById('visitors').textContent = stats.visitors.toLocaleString();
+            document.getElementById('messages').textContent = stats.messages;
+            document.getElementById('views').textContent = stats.views.toLocaleString();
+        }
+
+        // Контент
+        function loadContent() {
+            const data = loadData();
+            const content = data.content || {};
+            
+            document.getElementById('editName').value = content.name || '';
+            document.getElementById('editProfession').value = content.profession || '';
+            document.getElementById('editProjects').value = content.projects || '';
+            document.getElementById('editExperience').value = content.experience || '';
+            document.getElementById('editClients').value = content.clients || '';
+            document.getElementById('editDescription').value = content.description || '';
+        }
+
+        function saveContent() {
+            const data = loadData();
+            data.content = {
+                name: document.getElementById('editName').value,
+                profession: document.getElementById('editProfession').value,
+                projects: document.getElementById('editProjects').value,
+                experience: document.getElementById('editExperience').value,
+                clients: document.getElementById('editClients').value,
+                description: document.getElementById('editDescription').value
+            };
+            saveData(data);
+            showNotification('Контент сохранен!', 'success');
+        }
+
+        // Сообщения
+        function loadMessages() {
+            const data = loadData();
+            const messages = data.messages || [
+                {
+                    id: 1,
+                    name: 'Анна Иванова',
+                    email: 'anna@example.com',
+                    message: 'Здравствуйте! Интересует сотрудничество по проекту.',
+                    date: new Date().toISOString(),
+                    read: false
+                }
+            ];
+            
+            const filter = document.getElementById('messageFilter').value;
+            let filtered = messages;
+            
+            if (filter === 'unread') {
+                filtered = messages.filter(m => !m.read);
+            } else if (filter === 'read') {
+                filtered = messages.filter(m => m.read);
+            }
+            
+            const unreadCount = messages.filter(m => !m.read).length;
+            const badge = document.getElementById('unreadBadge');
+            if (badge) {
+                if (unreadCount > 0) {
+                    badge.textContent = unreadCount;
+                    badge.style.display = 'block';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+            
+            document.getElementById('newMessagesText').textContent = `${unreadCount} новых`;
+            
+            const list = document.getElementById('messagesList');
+            if (filtered.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #94a3b8; padding: 2rem;">Нет сообщений</p>';
+                return;
+            }
+            
+            list.innerHTML = filtered.map(msg => `
+                <div class="message-card ${msg.read ? '' : 'unread'}">
+                    <div class="message-header">
+                        <div>
+                            <div class="message-sender">${msg.name}</div>
+                            <div class="message-email">${msg.email}</div>
+                        </div>
+                        <div class="message-date">${formatDate(msg.date)}</div>
+                    </div>
+                    <div class="message-text">${msg.message}</div>
+                    <div class="message-actions">
+                        <button class="btn btn-sm btn-success" onclick="markRead(${msg.id})">✓ Прочитано</button>
+                        <button class="btn btn-sm btn-primary" onclick="replyMessage('${msg.email}')">📧 Ответить</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteMessage(${msg.id})">🗑 Удалить</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterMessages() {
+            loadMessages();
+        }
+
+        function markRead(id) {
+            const data = loadData();
+            const msg = data.messages.find(m => m.id === id);
+            if (msg) {
+                msg.read = true;
+                saveData(data);
+                loadMessages();
+                updateStats();
+            }
+        }
+
+        function replyMessage(email) {
+            window.open(`mailto:${email}?subject=Ответ с сайта-портфолио`);
+        }
+
+        function deleteMessage(id) {
+            if (confirm('Удалить сообщение?')) {
+                const data = loadData();
+                data.messages = data.messages.filter(m => m.id !== id);
+                saveData(data);
+                loadMessages();
+                updateStats();
+            }
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Утилиты
+        function saveAll() {
+            saveContent();
+            showNotification('Все данные сохранены!', 'success');
+        }
+
+        function exportData() {
+            const data = loadData();
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `portfolio-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            showNotification('Данные экспортированы!', 'success');
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = 'index.html';
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : '#ef4444'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Инициализация
+        updateStats();
+        loadMessages();
+    </script>
+</body>
+</html>
+

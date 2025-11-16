@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Петров - Портфолио</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand" data-editable="true" data-content-id="navBrand">Иван Петров</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-active">Главная</a></li>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="achievements.html">Достижения</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><button id="themeToggle" class="theme-toggle">🌙</button></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="animate-on-load animate-delay-1" data-editable="true" data-content-id="heroTitle">Привет, я <span class="highlight">Иван Петров</span></h1>
+            <p class="hero-subtitle animate-on-load animate-delay-2" data-editable="true" data-content-id="heroSubtitle">Fullstack разработчик & Дизайнер</p>
+            <p class="hero-description animate-on-load animate-delay-3" data-editable="true" data-content-id="heroDescription">
+                Создаю современные веб-приложения с фокусом на пользовательский опыт и производительность
+            </p>
+            <div class="hero-buttons animate-on-load animate-delay-4">
+                <button class="btn-primary" onclick="location.href='projects.html'">Мои проекты</button>
+                <button class="btn-secondary" onclick="location.href='contact.html'">Связаться со мной</button>
+            </div>
+            <div class="social-links animate-on-load animate-delay-5">
+                <a href="#" class="social-link">GitHub</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Telegram</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="profile-container animate-on-load animate-delay-3 animate-scale">
+                <div class="profile-image" data-content-type="image" data-content-id="profileImage">
+                    <img src="assets/images/profile.jpg" alt="Иван Петров">
+                </div>
+            </div>
+            <div class="floating-cards">
+                <div class="floating-card animate-on-load animate-delay-4">
+                    <h4>Проекты</h4>
+                    <span class="card-number" data-editable="true" data-content-id="projectsCount">12</span>
+                </div>
+                <div class="floating-card animate-on-load animate-delay-5">
+                    <h4>Опыт</h4>
+                    <span class="card-number" data-editable="true" data-content-id="experienceYears">3+</span> лет
+                </div>
+                <div class="floating-card animate-on-load animate-delay-6">
+                    <h4>Клиенты</h4>
+                    <span class="card-number" data-editable="true" data-content-id="happyClients">24</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Быстрые секции -->
+    <section class="quick-sections">
+        <div class="section-card animate-on-load animate-delay-1" onclick="location.href='projects.html'">
+            <div class="card-icon">💼</div>
+            <h3 data-editable="true" data-content-id="projectsCardTitle">Лучшие проекты</h3>
+            <p data-editable="true" data-content-id="projectsCardDesc">Посмотрите мои работы</p>
+        </div>
+        <div class="section-card animate-on-load animate-delay-2" onclick="location.href='achievements.html'">
+            <div class="card-icon">🏆</div>
+            <h3 data-editable="true" data-content-id="achievementsCardTitle">Достижения</h3>
+            <p data-editable="true" data-content-id="achievementsCardDesc">Сертификаты и награды</p>
+        </div>
+        <div class="section-card animate-on-load animate-delay-3" onclick="location.href='about.html'">
+            <div class="card-icon">👨‍💻</div>
+            <h3 data-editable="true" data-content-id="aboutCardTitle">Обо мне</h3>
+            <p data-editable="true" data-content-id="aboutCardDesc">Узнайте больше</p>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features">
+        <h2 class="animate-on-load animate-delay-1" data-editable="true" data-content-id="featuresTitle">Почему выбирают меня</h2>
+        <div class="features-grid">
+            <div class="feature-card animate-on-load animate-delay-2">
+                <div class="feature-icon">⚡</div>
+                <h4 data-editable="true" data-content-id="feature1Title">Современные технологии</h4>
+                <p data-editable="true" data-content-id="feature1Desc">Использую последние версии фреймворков и инструментов</p>
+            </div>
+            <div class="feature-card animate-on-load animate-delay-3">
+                <div class="feature-icon">🎨</div>
+                <h4 data-editable="true" data-content-id="feature2Title">Красивый дизайн</h4>
+                <p data-editable="true" data-content-id="feature2Desc">Создаю интерфейсы, которые нравятся пользователям</p>
+            </div>
+            <div class="feature-card animate-on-load animate-delay-4">
+                <div class="feature-icon">🚀</div>
+                <h4 data-editable="true" data-content-id="feature3Title">Быстрая работа</h4>
+                <p data-editable="true" data-content-id="feature3Desc">Оптимизирую производительность приложений</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="about.html">Обо мне</a>
+                <a href="projects.html">Проекты</a>
+                <a href="achievements.html">Достижения</a>
+                <a href="services.html">Услуги</a>
+                <a href="pricing.html">Цены</a>
+                <a href="blog.html">Блог</a>
+                <a href="testimonials.html">Отзывы</a>
+                <a href="contact.html">Контакты</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-admin">
+                <a href="admin.html" class="admin-footer-btn">⚙️ Админ</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2024 Иван Петров. Все права защищены.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
+    <script src="scripts/enhancements.js"></script>
+</body>
+</html>

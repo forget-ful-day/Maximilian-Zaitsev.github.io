@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Достижения - Иван Петров</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand" data-editable="true" data-content-id="navBrand">Иван Петров</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="achievements.html" class="nav-active">Достижения</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><button id="themeToggle" class="theme-toggle">🌙</button></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 data-editable="true" data-content-id="achievementsTitle">Мои достижения</h1>
+            <p class="hero-subtitle" data-editable="true" data-content-id="achievementsDescription">
+                Сертификаты, награды и профессиональные успехи
+            </p>
+        </div>
+    </section>
+
+    <!-- Статистика достижений -->
+    <section class="achievements-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-editable="true" data-content-id="certificatesCount">12</div>
+                    <div class="stat-label">Сертификатов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-editable="true" data-content-id="awardsCount">5</div>
+                    <div class="stat-label">Наград</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-editable="true" data-content-id="hackathonsCount">3</div>
+                    <div class="stat-label">Хакатонов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-editable="true" data-content-id="coursesCount">8</div>
+                    <div class="stat-label">Курсов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Фильтры достижений -->
+    <section class="achievements-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="certificate">Сертификаты</button>
+                <button class="filter-btn" data-filter="award">Награды</button>
+                <button class="filter-btn" data-filter="competition">Соревнования</button>
+                <button class="filter-btn" data-filter="course">Курсы</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сетка достижений -->
+    <section class="achievements-grid-section">
+        <div class="container">
+            <div class="achievements-grid" id="achievementsGrid">
+                <!-- Достижения загружаются динамически -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Таймлайн достижений -->
+    <section class="achievements-timeline">
+        <div class="container">
+            <h2 data-editable="true" data-content-id="timelineTitle">Хронология достижений</h2>
+            <div class="timeline" id="achievementsTimeline">
+                <!-- Таймлайн загружается динамически -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-editable="true" data-content-id="achievementsCtaTitle">Хотите узнать больше?</h2>
+            <p data-editable="true" data-content-id="achievementsCtaDescription">
+                Свяжитесь со мной для обсуждения сотрудничества
+            </p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="location.href='contact.html'">
+                    Связаться со мной
+                </button>
+                <button class="btn-secondary" onclick="location.href='projects.html'">
+                    Посмотреть проекты
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="about.html">Обо мне</a>
+                <a href="projects.html">Проекты</a>
+                <a href="achievements.html">Достижения</a>
+                <a href="services.html">Услуги</a>
+                <a href="pricing.html">Цены</a>
+                <a href="blog.html">Блог</a>
+                <a href="testimonials.html">Отзывы</a>
+                <a href="contact.html">Контакты</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-admin">
+                <a href="admin.html" class="admin-footer-btn">⚙️ Админ</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2024 Иван Петров. Все права защищены.</p>
+    </footer>
+
+    <!-- Модальное окно достижения -->
+    <div id="achievementModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="achievementModalBody">
+                <!-- Контент модального окна загружается динамически -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
+    <script src="scripts/achievements.js"></script>
+    <script src="scripts/enhancements.js"></script>
+</body>
+</html>

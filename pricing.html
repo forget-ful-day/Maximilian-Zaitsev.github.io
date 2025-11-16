@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цены - Иван Петров</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand" data-editable="true" data-content-id="navBrand">Иван Петров</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="pricing.html" class="nav-active">Цены</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><button id="themeToggle" class="theme-toggle">🌙</button></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="animate-on-load animate-delay-1">Тарифы и цены</h1>
+            <p class="hero-subtitle animate-on-load animate-delay-2">
+                Прозрачное ценообразование для всех типов проектов
+            </p>
+        </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-grid">
+                <div class="pricing-card animate-on-load animate-delay-1">
+                    <div class="pricing-header">
+                        <h3>Базовый</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">50,000</span>
+                            <span class="price-currency">₽</span>
+                        </div>
+                        <p class="pricing-description">Для небольших проектов</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Лендинг до 5 секций</li>
+                        <li>✓ Адаптивный дизайн</li>
+                        <li>✓ Базовый SEO</li>
+                        <li>✓ 1 месяц поддержки</li>
+                        <li>✓ Срок: 1-2 недели</li>
+                    </ul>
+                    <button class="btn-primary" onclick="location.href='contact.html'">Заказать</button>
+                </div>
+
+                <div class="pricing-card featured animate-on-load animate-delay-2">
+                    <div class="pricing-badge">Популярный</div>
+                    <div class="pricing-header">
+                        <h3>Стандарт</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">150,000</span>
+                            <span class="price-currency">₽</span>
+                        </div>
+                        <p class="pricing-description">Для бизнес-сайтов</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Многостраничный сайт</li>
+                        <li>✓ Уникальный дизайн</li>
+                        <li>✓ CMS интеграция</li>
+                        <li>✓ Формы обратной связи</li>
+                        <li>✓ 3 месяца поддержки</li>
+                        <li>✓ Срок: 3-4 недели</li>
+                    </ul>
+                    <button class="btn-primary" onclick="location.href='contact.html'">Заказать</button>
+                </div>
+
+                <div class="pricing-card animate-on-load animate-delay-3">
+                    <div class="pricing-header">
+                        <h3>Премиум</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">300,000</span>
+                            <span class="price-currency">₽</span>
+                        </div>
+                        <p class="pricing-description">Для сложных проектов</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Веб-приложение</li>
+                        <li>✓ Полный дизайн</li>
+                        <li>✓ Backend разработка</li>
+                        <li>✓ API интеграции</li>
+                        <li>✓ 6 месяцев поддержки</li>
+                        <li>✓ Срок: 2-3 месяца</li>
+                    </ul>
+                    <button class="btn-primary" onclick="location.href='contact.html'">Заказать</button>
+                </div>
+            </div>
+
+            <div class="pricing-note animate-on-load animate-delay-4">
+                <p>💡 Все цены указаны ориентировочно. Точная стоимость рассчитывается индивидуально после обсуждения проекта.</p>
+                <p>📞 Свяжитесь со мной для получения персонального предложения</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="about.html">Обо мне</a>
+                <a href="projects.html">Проекты</a>
+                <a href="services.html">Услуги</a>
+                <a href="pricing.html">Цены</a>
+                <a href="contact.html">Контакты</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-admin">
+                <a href="admin.html" class="admin-footer-btn">⚙️ Админ</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2024 Иван Петров. Все права защищены.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme-switcher.js"></script>
+    <script src="scripts/enhancements.js"></script>
+</body>
+</html>
+
