@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Портфолио сайт",
+    "description": "Современный портфолио с редактором контента",
+    "image": "https://via.placeholder.com/300x200?text=Portfolio+Site",
+    "url": "https://github.com/forget-ful-day/Maximilian-Zaitsev.github.io",
+    "tags": ["HTML", "CSS", "JavaScript", "GitHub"]
+  },
+  {
+    "id": 2,
+    "title": "Web приложение",
+    "description": "Интерактивное веб-приложение с авторизацией",
+    "image": "https://via.placeholder.com/300x200?text=Web+App",
+    "url": "https://example.com",
+    "tags": ["React", "Node.js", "MongoDB"]
+  },
+  {
+    "id": 3,
+    "title": "Мобильное приложение",
+    "description": "Кросс-платформенное мобильное приложение",
+    "image": "https://via.placeholder.com/300x200?text=Mobile+App",
+    "url": "https://example.com",
+    "tags": ["Flutter", "Firebase"]
+  }
+]

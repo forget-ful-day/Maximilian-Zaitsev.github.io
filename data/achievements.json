@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Senior Developer",
+    "description": "5+ лет опыта в веб-разработке",
+    "date": "2024",
+    "icon": "🏆"
+  },
+  {
+    "id": 2,
+    "title": "AWS Certified",
+    "description": "AWS Solutions Architect Associate",
+    "date": "2023",
+    "icon": "☁️"
+  },
+  {
+    "id": 3,
+    "title": "Open Source Contributor",
+    "description": "Активный участник проектов с открытым исходным кодом",
+    "date": "2022",
+    "icon": "🚀"
+  },
+  {
+    "id": 4,
+    "title": "Tech Speaker",
+    "description": "Выступления на конференциях и meetup'ах",
+    "date": "2023",
+    "icon": "🎤"
+  }
+]
