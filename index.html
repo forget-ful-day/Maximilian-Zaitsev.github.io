@@ -27,7 +27,6 @@
             <li><a href="about.html">Обо мне</a></li>
             <li><a href="projects.html">Проекты</a></li>
             <li><a href="achievements.html">Достижения</a></li>
-            <li><a href="services.html">Услуги</a></li>
             <li><a href="blog.html">Блог</a></li>
             <li><a href="contact.html">Контакты</a></li>
             <li><a href="faq.html">FAQ</a></li>
@@ -129,8 +128,6 @@
                 <a href="about.html">Обо мне</a>
                 <a href="projects.html">Проекты</a>
                 <a href="achievements.html">Достижения</a>
-                <a href="services.html">Услуги</a>
-                <a href="pricing.html">Цены</a>
                 <a href="blog.html">Блог</a>
                 <a href="testimonials.html">Отзывы</a>
                 <a href="contact.html">Контакты</a>
@@ -146,5 +143,33 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/theme-switcher.js"></script>
     <script src="scripts/enhancements.js"></script>
+    <script src="scripts/editor-enhanced.js"></script>
+    <link rel="stylesheet" href="styles/editor.css">
+    
+    <!-- Кнопка входа в режим редактирования -->
+    <div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;">
+        <button onclick="editor.enterEditMode()" style="
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s;
+            display: none;
+        " id="editModeBtn">
+            ✏️ Редактировать
+        </button>
+    </div>
+    
+    <script>
+        // Показываем кнопку редактирования если есть параметр edit в URL
+        if (new URLSearchParams(window.location.search).has('edit')) {
+            document.getElementById('editModeBtn').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
